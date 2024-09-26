@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+*{
+    padding: 0%;
+    margin: 0%;
+    font-family: "Nunito Sans";
+}
+
+body{
+    background-image: linear-gradient(#FFA800, #ffe9b9);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 3% 3% 1%;
+}
+
+.navbar .links{
+    width: 20rem;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+.navbar .title{
+    color: white;
+    font-size: 2rem;
+}
+
+.navbar .links a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.25em;
+}
+
+.navbar .links a:hover{
+    color: white;
+    text-decoration:underline;
+}
+
+.maintitle{
+    font-size: 7rem;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    letter-spacing: 1.25rem;
+}
+
+form{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form input[type="url"]{
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 2px solid white;
+    padding: 2% 5%;
+    font-size: 1.5rem;
+    margin-bottom: 2%;
+    border-radius: 25px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    user-select: none;
+}
+
+form input[type="url"]:focus {
+    border: 2px solid orange;
+}
+
+form input[type="submit"]{
+    width: 10em;
+    background-color: white;
+    color: orange;
+    border: none;
+    padding: 2%;
+    font-size: 1.5rem;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    user-select: none;
+}
+
+form input[type="submit"]:hover {
+    background-color: orange;
+    color: white;
+}
+
+.content{
+    font-size: 1.25rem;
+    margin-top: 1%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: justify;
+    color: #FFFFFF;
+    width: 65rem;
+}
+
+.content p{
+    margin-top: 1.5%;
+}

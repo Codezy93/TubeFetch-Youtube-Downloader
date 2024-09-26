@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='/style/style.css') }}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='/script/script.js') }}"></script>
+    </head>
+    <body>
+        <div class="navbar">
+            <h1 class="title">TUBEFETCH</h1>
+            <div class="links">
+                <a href="/">HOME</a>
+                <a href="about">ABOUT</a>
+                <a href="contact">CONTACT</a>
+            </div>
+        </div>
+        <h1 class="maintitle">TUBEFETCH</h1>
+        <div class="content">
+            <img src="{{ data['thumbnailURL'] }}" alt="thumbnail" class="thumbnail">
+            <p>{{ data['title'] }}</p>
+            <p>{{ data['views'] }}</p>
+            <p>{{ data['duration'] }}</p>
+            <p>{{ data['author'] }}</p>
+        </div>
+    </body>
+</html>
