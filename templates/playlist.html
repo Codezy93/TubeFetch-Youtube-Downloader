@@ -21,9 +21,7 @@
         <div class="video-content">
             <div class="video-left">
                 <img src="{{ data['thumbnailURL'] }}" alt="thumbnail" class="thumbnail">
-            </div>
-            <div class="video-right">
-                <h5>{{ data['title'] }}</h5><br>
+                <h5>{{ data['title'] }}</h5>
                 <table>
                     <tr>
                         <td>Uploaded by: </td>
@@ -38,25 +36,15 @@
                         <td>{{ data['duration'] }}</td>
                     </tr>
                 </table>
-                <form id="downloadForm">
-                    <select id="resolution">
-                        {% for url in data['Video Download URLs'] %}
-                            <option value="{{ data['Video Download URLs'][url] }}">{{ url.split('res=')[-1] }}</option>
-                        {% endfor %}
-                        <option value="{{ data['Audio Download URL'] }}">Audio</option>
-                    </select>
-                    <button type="button" id="downloadBtn">Download</button>
+                <form>
+                    <button type="submit">Download all Videos</button>
+                    <button type="submit">Download all Audios</button>
                 </form>
-                <script>
-                    const title = "{{ data['title'] }}.mp4";
-                    document.getElementById('downloadBtn').addEventListener('click', function() {
-                        const selectedUrl = document.getElementById('resolution').value;
-                        downloadVideo(selectedUrl, title);
-                    });
-                    function downloadVideo(url, videoTitle) {
-                        window.open(url, target="blank_")
-                    }
-                </script>
+            </div>
+            <div class="playlist-right">
+                {% for i in range(1, 21) %}
+                    <div class="playlist-video-tile"><p>{{ i }} </p><p> {{ data['title'][0:61] }} </p><p> {{ data['views'] }} </p><p> {{ data['duration'] }}</p><a href="{{ data['thumbnailURL'] }}">Download</a></div><br>
+                {% endfor %}
             </div>
         </div>
     </body>

@@ -22,15 +22,24 @@ def format_duration(duration):
     return str(timedelta(seconds=duration))
 
 def get_video_info(url):
-    yt = YouTube(url)
+    yt = YouTube(url, 'WEB_CREATOR')
     title = str(yt.title).strip()
+    video_download_urls = {}
+    for resolution in ['1080p', '720p', '480p', '360p', '240p', '144p']:
+        stream = yt.streams.filter(res=resolution, progressive=True).first()
+        if stream is None:
+            stream = yt.streams.filter(res=resolution, only_video=True).first()
+        if stream is not None:
+            video_download_urls[resolution] = stream.url
+    audio_download_url = yt.streams.filter(only_audio=True).first().url
     return {
         'title': title,
         'views': str(format_number(int(yt.views))).strip(),
         'duration': format_duration(yt.length),
         'thumbnailURL': str(yt.thumbnail_url).strip(),
         'author': str(yt.author).strip(),
-        # 'Download URLs': [yt.streams.get_by_resolution()]
+        'Video Download URLs': video_download_urls,
+        'Audio Download URL': audio_download_url
     }
 
 def get_playlist_info(url):
@@ -65,14 +74,18 @@ def contactpage():
 def videopage():
     if request.method == "POST":
         url = request.form['link']
-        print(url)
         data = get_video_info(url)
         return render_template('video.html', data=data)
     return render_template('video.html')
 
 @app.route('/playlist')
 def playlistpage():
+    if request.method == "POST":
+        url = request.form['link']
+        data = get_playlist_info(url)
+        return render_template('video.html', data=data)
     return render_template('playlist.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
+    # print(get_video_info('https://www.youtube.com/watch?v=GHRXqyt6yzk'))

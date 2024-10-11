@@ -18,7 +18,7 @@
             </div>
         </div>
         <h1 class="maintitle">TUBEFETCH</h1>
-        <form action="{{ url_for('videopage') }}">
+        <form action="{{ url_for('videopage') }}" method="post" class="main-form">
             <input type="url" required placeholder="Paste you url here..." name="link" id="link">
             <div class="buttons">
                 <input type="submit" value="Download Video">

@@ -4,13 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='/style/style.css') }}">
+        <link rel="stylesheet" href="/static/style/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="{{ url_for('static', filename='/script/script.js') }}"></script>
+        <script src="/static/script/script.js"></script>
     </head>
     <body>
         <div class="navbar">
-            <a class="title" href="/">TUBEFETCH</a>
+            <h1 class="title">TUBEFETCH</h1>
             <div class="links">
                 <a href="/">HOME</a>
                 <a href="about">ABOUT</a>
@@ -38,25 +38,15 @@
                         <td>{{ data['duration'] }}</td>
                     </tr>
                 </table>
-                <form id="downloadForm">
+                <form>
                     <select id="resolution">
-                        {% for url in data['Video Download URLs'] %}
-                            <option value="{{ data['Video Download URLs'][url] }}">{{ url.split('res=')[-1] }}</option>
-                        {% endfor %}
+                        {% for i in data['Video Download URLs'] %}
+                            <option value="{{ data['Video Download URLs'][i] }}">i</option>
+                        {% end for %}
                         <option value="{{ data['Audio Download URL'] }}">Audio</option>
                     </select>
-                    <button type="button" id="downloadBtn">Download</button>
+                    <button>Download</button>
                 </form>
-                <script>
-                    const title = "{{ data['title'] }}.mp4";
-                    document.getElementById('downloadBtn').addEventListener('click', function() {
-                        const selectedUrl = document.getElementById('resolution').value;
-                        downloadVideo(selectedUrl, title);
-                    });
-                    function downloadVideo(url, videoTitle) {
-                        window.open(url, target="blank_")
-                    }
-                </script>
             </div>
         </div>
     </body>
